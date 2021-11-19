@@ -1914,7 +1914,36 @@ old는 치환할 문자열, new는 치환한 문자열, g는 전체에 적용, i
 
 ---
 ### getopt 설명
+- 쉘에서 명령을 실행할 때 옵션을 사용하는데 이때 옵션 해석작업을 쉽게 도와주는 명령.
+- stdio.h 와 unistd.h 모두에 정의되어 있음
 
+#### 참고사항으로 short 옵션의 특징
+```python
+command -a -b -c            ##처럼 그냥 사용도 가능하고
+command -abc                ##붙여서도 사용할 수 있고
+command -b -ca              ##순서가 바뀌어도 된다.
+command -a xxx -b -c yyy    ##옵션 인수를 가질 수 있다.
+command -axxx -bcyyy        ##위와 똑같이 해석이 된다.
+command -a -b -- -c         ##옵션 구분자 '--'의 우측에 있는 값은 옵션으로 해석하면안됨
+```
+#### long옵션의 경우
+`--posix`,`--warning level` 와 같은 형태로 사용되는 long 옵션은 붙여서 쓸수가 없음
 
+getopt는 /usr/bin/getopt에 위치한 외부 명령어로 short, long 옵션을 모두 지원하고 : 에 따라 옵션 -a는 옵션 인수를 가짐\
+short옵션 지정은 -o옵션으로, : 에 따라 옵션 -a 는 옵션 인수를 가짐.\
+`getopt -o a:bc`
+
+long 옵션지정은 -l 옵션으로, 옵션명은 ',' 로 구분\
+:에 따라 옵션 --path와 --name은 옵션 인수를 가짐\
+명령 라인에서 옵션 인수 사용은 "--name foo" 또는 "--name=foo" 두가지 모두 가능\
+`getopt -l help, path:,name:`
+
+명령 마지막에는 --와 함께 "$@"를 붙임\
+`getopt -o a:bc -l help,path:,name: -- "$@"`
+
+설정하지 않은 옵션이 사용되거나 옵션 인수가 빠질 경우 오류메시지를 출력해줌\
+getopt 명령은 사용자가 입력한 옵션들을 case 문에서 사용하기 좋게 정렬해줌\
 ---
 ### getopts 설명
+
+getopts는 getopt에서 short옵션을 처리한다.
