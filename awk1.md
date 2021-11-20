@@ -34,7 +34,7 @@
        causes the re-evaluation of $0. Assigning to $0 shall reset the
        values of all other fields and the NF built-in variable.
        
-##OPTIONS         
+## OPTIONS         
        The awk utility shall conform to the Base Definitions volume of
        POSIX.1‐2017, Section 12.2, Utility Syntax Guidelines.
 
@@ -125,7 +125,7 @@
                            arguments, assignments shall be executed
                            before processing the standard input.
                            
-##STDIN         
+## STDIN         
        The standard input shall be used only if no file operands are
        specified, or if a file operand is '-', or if a progfile option-
        argument is '-'; see the INPUT FILES section. If the awk program
