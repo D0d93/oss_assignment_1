@@ -1118,7 +1118,7 @@
        expect a pattern or a string valued expression that is a regular
        expression as defined in Regular Expressions.
 
-   Input/Output and General Functions
+ ###  Input/Output and General Functions
        The input/output and general functions are:
 
        close(expression)
@@ -1206,7 +1206,7 @@
        ``equivalent strings'', even those that differ only by <space>
        characters, represent different files.
 
-   User-Defined Functions
+  ### User-Defined Functions
        The awk language also provides user-defined functions. Such
        functions can be defined as:
 
