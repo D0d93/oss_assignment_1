@@ -3,17 +3,19 @@
 
 ---
 
-### awk description 1
+# awk description 1
 [출처 : Linux manual page](https://man7.org/linux/man-pages/man1/awk.1p.html "리눅스 메뉴얼 페이지")
 
-NAME        
+#### NAME        
        awk — pattern scanning and processing language
-SYNOPSIS         
+       
+#### SYNOPSIS         
        awk [-F sepstring] [-v assignment]... program [argument...]
 
        awk [-F sepstring] -f progfile [-f progfile]... [-v assignment]...
             [argument...]
-DESCRIPTION         
+            
+#### DESCRIPTION         
        The awk utility shall execute programs written in the awk
        programming language, which is specialized for textual data
        manipulation. An awk program is a sequence of patterns and
@@ -36,7 +38,8 @@ DESCRIPTION
        $0 shall refer to the entire record; setting any other field
        causes the re-evaluation of $0. Assigning to $0 shall reset the
        values of all other fields and the NF built-in variable.
-OPTIONS         
+       
+#### OPTIONS         
        The awk utility shall conform to the Base Definitions volume of
        POSIX.1‐2017, Section 12.2, Utility Syntax Guidelines.
 
@@ -72,7 +75,7 @@ OPTIONS
                  executing the awk program, including the actions
                  associated with BEGIN patterns (if any). Multiple
                  occurrences of this option can be specified.
-OPERANDS         
+#### OPERANDS         
        The following operands shall be supported:
 
        program   If no -f option is specified, the first operand to awk
@@ -126,14 +129,16 @@ OPERANDS
                            END actions (if any). If there are no file
                            arguments, assignments shall be executed
                            before processing the standard input.
-STDIN         
+                           
+#### STDIN         
        The standard input shall be used only if no file operands are
        specified, or if a file operand is '-', or if a progfile option-
        argument is '-'; see the INPUT FILES section. If the awk program
        contains no actions and no patterns, but is otherwise a valid awk
        program, standard input and any file operands shall not be read
        and awk shall exit with a return status of zero.
-INPUT FILES         
+       
+#### INPUT FILES         
        Input files to the awk program from any of the following sources
        shall be text files:
 
@@ -153,7 +158,8 @@ INPUT FILES
        the files named by each of the progfile option-arguments are text
        files and their concatenation, in the same order as they appear
        in the arguments, is an awk program.
-ENVIRONMENT VARIABLES         
+       
+#### ENVIRONMENT VARIABLES         
        The following environment variables shall affect the execution of
        awk:
 
@@ -207,15 +213,20 @@ ENVIRONMENT VARIABLES
 
        In addition, all environment variables shall be visible via the
        awk variable ENVIRON.
-ASYNCHRONOUS EVENTS         
+       
+#### ASYNCHRONOUS EVENTS         
        Default.
-STDOUT         
+       
+#### STDOUT         
        The nature of the output files depends on the awk program.
-STDERR         
+       
+#### STDERR         
        The standard error shall be used only for diagnostic messages.
-OUTPUT FILES         
+       
+#### OUTPUT FILES         
        The nature of the output files depends on the awk program.
-EXTENDED DESCRIPTION         
+       
+#### EXTENDED DESCRIPTION         
    Overall Program Structure
        An awk program is composed of pairs of the form:
 
@@ -768,12 +779,12 @@ EXTENDED DESCRIPTION
        matching, the use of one or more NUL characters in the pattern,
        input record, or text string produces undefined results.
 
-   Patterns
+####   Patterns
        A pattern is any valid expression, a range specified by two
        expressions separated by a comma, or one of the two special
        patterns BEGIN or END.
 
-   Special Patterns
+####   Special Patterns
        The awk utility shall recognize two special patterns, BEGIN and
        END.  Each BEGIN pattern shall be matched once and its associated
        action executed before the first record of input is read—except
@@ -797,14 +808,14 @@ EXTENDED DESCRIPTION
        patterns BEGIN and END, the input shall be read before the
        statements in the END actions are executed.
 
-   Expression Patterns
+####   Expression Patterns
        An expression pattern shall be evaluated as if it were an
        expression in a Boolean context. If the result is true, the
        pattern shall be considered to match, and the associated action
        (if any) shall be executed. If the result is false, the action
        shall not be executed.
 
-   Pattern Ranges
+####   Pattern Ranges
        A pattern range consists of two expressions separated by a comma;
        in this case, the action shall be performed for all records
        between a match of the first expression and the following match
@@ -812,7 +823,7 @@ EXTENDED DESCRIPTION
        range can be repeated starting at input records subsequent to the
        end of the matched range.
 
-   Actions
+####   Actions
        An action is a sequence of statements as shown in the grammar in
        Grammar.  Any single statement can be replaced by a statement
        list enclosed in curly braces. The application shall ensure that
@@ -858,7 +869,7 @@ EXTENDED DESCRIPTION
        awk, unless subsequent errors are encountered or a subsequent
        exit statement with an expression is executed.
 
-   Output Statements
+####   Output Statements
        Both print and printf statements shall write to standard output
        by default. The output shall be written to the location specified
        by output_redirection if one is supplied, as follows:
@@ -976,11 +987,11 @@ EXTENDED DESCRIPTION
 
        Both print and printf can output at least {LINE_MAX} bytes.
 
-   Functions
+####   Functions
        The awk language has a variety of built-in functions: arithmetic,
        string, input/output, and general.
 
-   Arithmetic Functions
+####   Arithmetic Functions
        The arithmetic functions, except for int, shall be based on the
        ISO C standard (see Section 1.1.2, Concepts Derived from the ISO
        C Standard).  The behavior is undefined in cases where the ISO C
@@ -1015,7 +1026,7 @@ EXTENDED DESCRIPTION
                  day if expr is omitted. The previous seed value shall
                  be returned.
 
-   String Functions
+ ####  String Functions
        The string functions in the following list shall be supported.
        Although the grammar (see Grammar) permits built-in functions to
        appear with no arguments or parentheses, unless the argument or
@@ -1243,7 +1254,7 @@ EXTENDED DESCRIPTION
        Function definitions can appear anywhere in the program where a
        pattern-action pair is allowed.
 
-   Grammar
+ ####  Grammar
        The grammar in this section and the lexical conventions in the
        following section shall together describe the syntax for awk
        programs. The general conventions for this style of grammar are
@@ -1616,7 +1627,7 @@ EXTENDED DESCRIPTION
            { print  $1,
                     $2 }
 
-   Lexical Conventions
+####   Lexical Conventions
        The lexical conventions for awk programs, with respect to the
        preceding grammar, shall be as follows:
 
@@ -1743,7 +1754,7 @@ EXTENDED DESCRIPTION
        recognized. In any other syntactic context where the token ERE
        could appear as the next token in a valid program, the token ERE
        shall be recognized.
-EXIT STATUS        
+#### EXIT STATUS        
        The following exit values shall be returned:
 
         0    All input files were processed successfully.
@@ -1752,6 +1763,7 @@ EXIT STATUS
 
        The exit status can be altered within the program by using an
        exit expression.
+---
 ---
 ### awk description 2
 위에는 한번 간단하게 결과를 보고 약간 수정한거고 제가 알아볼만한 결과로 정리 다시 하는걸로 하겠습니다....
